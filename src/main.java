@@ -1,42 +1,21 @@
+import java.util.ArrayList;
 
-public class main {
+class Test {
 
-    public interface Shape {
-        double calculateArea();
+    interface Funcinterface {
+        int operation(int a, int b);
     }
 
-    public enum ShapeType implements Shape {
-        CIRCLE {
-            @Override
-            public double calculateArea() {
-                double radius = 5.0;
-                return Math.PI * radius * radius;
-            }
-        },
-        SQUARE {
-            @Override
-            public double calculateArea() {
-                double side = 5.0;
-                return side * side;
-            }
-        },
-        RECTANGLE {
-            @Override
-            public double calculateArea() {
-                double length = 5.0;
-                double width = 3.0;
-                return length * width;
-            }
-        };
+    private int operate(int a, int b, Funcinterface test) {
+        return test.operation(a, b);
     }
 
-    public static void main(String[] args) {
-        double circleArea = ShapeType.CIRCLE.calculateArea();
-        double squareArea = ShapeType.SQUARE.calculateArea();
-        double rectangleArea = ShapeType.RECTANGLE.calculateArea();
-
-        System.out.println("Circle Area: " + circleArea);
-        System.out.println("Square Area: " + squareArea);
-        System.out.println("Rectangle Area: " + rectangleArea);
+    public static void main(String args[]) {
+        Funcinterface add = (int x, int y) -> x + y;
+        Funcinterface multiply = (int x, int y) -> x * y;
+        Test t = new Test();
+        System.out.println("Addtion is : " + t.operate(6, 3, add));
+        System.out.println("Multiplacation is : " + t.operate(6, 3, multiply));
     }
+
 }
